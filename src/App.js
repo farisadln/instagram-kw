@@ -59,7 +59,7 @@ function App() {
   }, [user, username]);
 
   useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) => {
+    db.collection("posts").orderBy('timestamp','desc').onSnapshot((snapshot) => {
       setPosts(
         snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -94,8 +94,6 @@ function App() {
   return (
     
     <div className="app">
-    <ImageUpload/>
-    {/* Sign up*/}
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <center>
@@ -181,11 +179,16 @@ function App() {
       {posts.map(({ id, post }) => (
         <Post
           key={id}
-          username={post.username}
+          username={post.username.username}
           caption={post.caption}
           imageUrl={post.imageUrl}
         />
       ))}
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName}/>
+      ): (
+        <h3>You need login to upload</h3>
+      )}
     </div>
   );
 }

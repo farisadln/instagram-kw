@@ -2,20 +2,42 @@
   margin: 0;
 }
 
+.app__posts{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
 .app {
   background-color: #fafafa;
   height: 100vh;
 }
 
 .app__header {
+  position: sticky;
+  top: 0 ;
   background-color: white;
   padding:  20px;
   border-bottom: 1px solid lightgrey; 
   object-fit: contain;
+  display: flex;
+  justify-content: space-between;
+}
+
+.app__postsRight {
+  margin-left: 20px;
+}
+
+.app___postsLeft {
+  margin-right: 20px;
 }
 
 .app_signup {
   display: flex;
   text-align: center;
   flex-direction: column;
+}
+
+.app__headerImage {
+  object-fit: contain;
 }
